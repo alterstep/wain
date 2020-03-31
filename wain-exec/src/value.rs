@@ -26,7 +26,9 @@ where
 }
 
 fn write_bytes(buf: &mut [u8], addr: usize, bytes: &[u8]) {
-    buf[addr..addr + bytes.len()].copy_from_slice(bytes);
+    for i in 0..bytes.len() {
+        buf[addr + i] = bytes[i];
+    }
 }
 
 macro_rules! impl_le_rw {

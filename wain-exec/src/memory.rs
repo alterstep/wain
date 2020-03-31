@@ -80,7 +80,9 @@ impl Memory {
             ));
         }
 
-        self.data[offset..end_addr].copy_from_slice(&segment.data);
+        for i in 0..data.len() {
+            self.data[offset + i] = data[i];
+        }
 
         Ok(())
     }
